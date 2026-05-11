@@ -16,10 +16,10 @@ In the geoIACS XSD model, features are defined with specific spatial properties:
 *   **Strict Surfaces:** Elements like `ReferenceParcel`, `AgriculturalParcel`, `AgriculturalArea`, and `OtherEligibleArea` are defined with `gml:SurfacePropertyType`. These naturally translate into standard polygon tables.
 *   **Flexible Geometries:** Elements like `EcoLandscapeElement`, `Site`, and `EcologicalFocusArea` are defined with `gml:GeometryPropertyType`, meaning a single conceptual feature can be represented as a Point, a LineString, or a Polygon.
 
-Standard relational databases and GIS software (such as QGIS) operate on the principle of **"one geometry type per layer."** While SQLite can technically store mixed geometries in a single column, doing so breaks compatibility with most GIS clients, which require homogeneous spatial tables for rendering and indexing. 
+While advanced spatial databases like PostGIS can natively store mixed geometry types in a single column (allowing GIS clients like QGIS to recognize them during import and dynamically load them as separate map layers), the **OGC GeoPackage standard** has different operational constraints. To guarantee full compatibility, spatial indexing, and seamless rendering across all GIS clients, a GeoPackage requires each spatial table to be registered with a single, homogeneous geometry type within its `gpkg_geometry_columns` metadata table.
 
 ### The Split-Table Strategy
-To solve the polymorphic geometry challenge and ensure full GIS compatibility, features with flexible geometries have been explicitly **split into separate tables** based on their spatial type (e.g., one table for points, one for lines, one for polygons). 
+To solve the polymorphic geometry challenge and fully comply with the GeoPackage standards, features with flexible geometries have been explicitly **split into separate tables** based on their spatial type (e.g., one table for points, one for lines, one for polygons). 
 
 Depending on the complexity of the feature, two different relational strategies were applied to manage these split tables:
 
