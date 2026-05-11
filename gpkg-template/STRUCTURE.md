@@ -232,9 +232,3 @@ erDiagram
     ECOLANDSCAPEELEMENT ||--o| ELE_GEOMETRY_TABLES : "has_geometry (Point/Line/Poly)"
     SITE_GEOMETRY_TABLES ||--o{ FARMANIMALSPECIES : "hosts"
     SITE_GEOMETRY_TABLES ||--o{ NACEACTIVITYVALUE : "has_activity"
-
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
-```
