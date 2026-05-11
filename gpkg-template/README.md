@@ -13,8 +13,8 @@ The transition from an XSD schema to a GeoPackage requires adapting hierarchical
 
 ### The Challenge of Polymorphic Geometries
 In the geoIACS XSD model, features are defined with specific spatial properties:
-*   **Strict Surfaces:** Elements like `ReferenceParcel`, `AgriculturalParcel`, `AgriculturalArea`, and `OtherEligibleArea` are defined with `gml:SurfacePropertyType`. These naturally translate into standard polygon tables.
-*   **Flexible Geometries:** Elements like `EcoLandscapeElement`, `Site`, and `EcologicalFocusArea` are defined with `gml:GeometryPropertyType`, meaning a single conceptual feature can be represented as a Point, a LineString, or a Polygon.
+*   **Strict Surfaces:** Elements like `ReferenceParcel`, `AgriculturalParcel`, `AgriculturalArea`, and `OtherEligibleArea` have their geometry defined as `gml:SurfacePropertyType`. These naturally translate into standard polygon tables.
+*   **Flexible Geometries:** Elements like `EcoLandscapeElement`, `Site`, and `EcologicalFocusArea` have their geometry defined as `gml:GeometryPropertyType`, meaning a single conceptual feature can be represented as a Point, a LineString, or a Polygon.
 
 While advanced spatial databases like PostGIS can natively store mixed geometry types in a single column (allowing GIS clients like QGIS to recognize them during import and dynamically load them as separate map layers), the **OGC GeoPackage standard** has different operational constraints. To guarantee full compatibility, spatial indexing, and seamless rendering across all GIS clients, a GeoPackage requires each spatial table to be registered with a single, homogeneous geometry type within its `gpkg_geometry_columns` metadata table.
 
