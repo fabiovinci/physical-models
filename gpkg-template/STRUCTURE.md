@@ -31,7 +31,7 @@ The following diagram illustrates the logical relationships between the entities
 
 *(Note: "GEOMETRY_TABLES" blocks represent the unified schema of the separated point, linestring, and polygon tables for readability).*
 
-```mermaid
+<div class="mermaid">
 erDiagram
     %% Core Geographic Pillar
     REFERENCEPARCEL {
@@ -232,7 +232,7 @@ erDiagram
     ECOLANDSCAPEELEMENT ||--o| ELE_GEOMETRY_TABLES : "has_geometry (Point/Line/Poly)"
     SITE_GEOMETRY_TABLES ||--o{ FARMANIMALSPECIES : "hosts"
     SITE_GEOMETRY_TABLES ||--o{ NACEACTIVITYVALUE : "has_activity"
-```
+</div>)
 <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
